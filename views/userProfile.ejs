@@ -2,19 +2,39 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/main.css">
     <title><%= title %>></title>
 </head>
 <body>
     <h1>User Profile: <%= user.name %></h1>
-    <p><b>User ID:</b> <%= user.id %></p>
-    <h2>Content Items by <%= user.name %>:</h2>
-    <ul>
-        <% authoredContent.forEach(function(item) { %>
-            <li><b>Deadline: <a href="/content/<%= item.id %>"" <%= item.deadline %>:</b> <%= item.title %></li>
-        <% }); %>
-        <% if (authoredContent.length === 0) { %>
-            <li>No content items found for this user.</li>
-        <% } %>
-    </ul>
+    <h2><%= user.name %> is assigned to:</h2>  
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Deadline</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+                <% const activeContent = authoredContent.filter(item => item.status);
+            activeContent.forEach(function(item) { %>    
+            <td><a href="/content/<%= item.id %>"><%= item.title %></a></td>
+            <td>Deadline: <%= item.deadline %></td>
+            <td>(<%= item.status %>)</td></li>
+            <td>update</td>
+            <td>delete</td>
+            <% }); %>
+            <% if (authoredContent.length === 0) { %>
+                <td>No content items found for this user.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            <% } %>
+        </tbody>
+    </table>
 </body>
 </html>

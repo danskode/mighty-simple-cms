@@ -7,6 +7,8 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+import methodOverride from 'method-override';
+
 // === Dummy Data ===
 let contentData = [];
 let userData = [];
@@ -34,6 +36,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 // === Pages ===
 
@@ -95,6 +98,22 @@ app.get('/users/:id', (req, res) => {
     });
 });
 
+app.delete('/users/:id', (req, res) => {
+    const userId = Number(req.params.id);
+
+    if (!userData.find(u => Number(u.id) === userId)) {
+        return res.status(404).send('User not found');
+    }
+    userData = userData.filter(u => Number(u.id) !== userId);
+    contentData.forEach(item => {
+        item.authorIds = item.authorIds.filter(id => Number(id) !== userId);
+    });
+    res.status(200).render('users', {
+        title: 'All Users',
+        contentData,
+        userData
+    });
+});
 
 // === Server Setup ===
 const PORT = process.env.PORT || 3000;
