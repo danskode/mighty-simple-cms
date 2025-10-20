@@ -4,11 +4,32 @@
     <meta charset="UTF-8" />
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <a id="logo" href="/"><img src="/assets/images/logo.png"></a>
+                <a href="/content">Content</a>
+                <a href="/users">Users</a>
+            </ul>
+        </nav>        
+    </header>
+    <main>
+        <h1>Welcome to Mighty Simple CMS</h1>
+        <p>This is the frontpage where you should see a login page first. But for now:.</p><br>
 
-    <h1>Welcome to Mighty Simple CMS</h1>
-    <p>This is the frontpage.</p>
-    
+        <form action="/login" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2025 Mighty Simple CMS</p>
+    </footer>
 </body>
 </html>

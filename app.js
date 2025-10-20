@@ -41,7 +41,7 @@ app.use(methodOverride('_method'));
 // === Pages ===
 
 app.get('/', (req, res) => {
-    res.render('index', {
+    res.render('frontpage', {
         title: 'Welcome to Mighty Small CMS',
         contentData,
         userData
@@ -64,12 +64,26 @@ app.get('/content/:id', (req, res) => {
         return res.status(404).send('Content item not found');
     }
 
-    const authors = userData.filter(user => contentItem.authorIds.includes(user.id.toString()));
+    const contributers = userData.filter(user => contentItem.authorIds.includes(user.id.toString()));
 
     res.render('contentItem', {
         title: contentItem.title,
         contentItem,
-        authors
+        contributers
+    });
+});
+
+app.delete('/content/:id', (req, res) => {
+    const contentId = Number(req.params.id);
+
+    if (!contentData.find(item => Number(item.id) === contentId)) {
+        return res.status(404).send('Content item not found');
+    }
+    contentData = contentData.filter(item => Number(item.id) !== contentId);
+    res.status(200).render('content', {
+        title: 'Mighty Small CMS',
+        contentData,
+        userData
     });
 });
 

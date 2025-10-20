@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
     <title><%= title %></title>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <ul>
+                <a id="logo" href="/"><img src="/assets/images/logo.png"></a>
+                <a href="/content">Content</a>
+                <a href="/users">Users</a>
+            </ul>
+        </nav>        
+    </header>
+    <main>
+        <h1>Content Item: <%= contentItem.title %></h1>
+        <p><strong>Type:</strong> <%= contentItem.type %></p>
+        <p><strong>Constributers: </strong>
+            <% contributers.forEach(function(user, idx) { %>
+                <a href="/users/<%= user.id %>"><%= user.name %></a><%= idx < contributers.length - 1 ? ', ' : '' %>
+            <% }); %>
+            <% if (contributers.length === 0) { %>Unknown<% } %>
+        </p>
+        <p><strong>Deadline:</strong> <%= contentItem.deadline ? contentItem.deadline : 'No deadline set' %></p>
+        <p><strong>Status:</strong> <%= contentItem.status %></p>
+        <p><strong>Description:</strong></p>
+        <p><%= contentItem.description %></p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Mighty Simple CMS</p>
+    </footer>   
 </body>
 </html>

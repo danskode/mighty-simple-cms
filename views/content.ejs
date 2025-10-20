@@ -6,49 +6,67 @@
     <title><%= title %></title>
 </head>
 <body>
-    <h1>All content</h1>
-    Here is a list of all content items and their authors:
-    <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Deadline</th>
-                <th>Title</th>
-                <th>Authors</th>
-                <th>Status</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% const sortedContent = [...contentData].sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
-            sortedContent.forEach(function(item) { %>
+    <header>
+        <nav>
+            <ul>
+                <a id="logo" href="/"><img src="/assets/images/logo.png"></a>
+                <a href="/content">Content</a>
+                <a href="/users">Users</a>
+            </ul>
+        </nav>        
+    </header>
+    <main
+        <h1>All content</h1>
+        Here is a list of all content items and their authors:
+        <table>
+            <thead>
                 <tr>
-                    <td><%= item.type %></td>
-                    <td><%= item.deadline %></td>
-                    <td><%= item.title %></td>
-                    <td>
-                        <%
-                        const authors = item.authorIds
-                            .map(authorId => userData.find(u => u.id === authorId))
-                            .filter(user => user !== undefined);
-                        %>
-                        <% authors.forEach((user, index) => { %>
-                            <a href="/users/<%= user.id %>"><%= user.name %></a><%= index < authors.length - 1 ? ', ' : '' %>
-                        <% }); %>
-                        <% if (authors.length === 0) { %>Unknown<% } %>
-                    </td>
-                    <td><%= item.status %></td>
-                    <td><a href="/content/<%= item.id %>/update">Update</a></td>
-                    <td><a href="/content/<%= item.id %>/delete">Delete</a></td>
+                    <th>Type</th>
+                    <th>Deadline</th>
+                    <th>Title</th>
+                    <th>Authors</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                 </tr>
-            <% }); %>
-            <% if (contentData.length === 0) { %>
-                <tr>
-                    <td colspan="7">No content available in the dataset.</td>
-                </tr>
-            <% } %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% const sortedContent = [...contentData].sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+                sortedContent.forEach(function(item) { %>
+                    <tr>
+                        <td><%= item.type %></td>
+                        <td><%= item.deadline %></td>
+                        <td><%= item.title %></td>
+                        <td>
+                            <%
+                            const authors = item.authorIds
+                                .map(authorId => userData.find(u => u.id === authorId))
+                                .filter(user => user !== undefined);
+                            %>
+                            <% authors.forEach((user, index) => { %>
+                                <a href="/users/<%= user.id %>"><%= user.name %></a><%= index < authors.length - 1 ? ', ' : '' %>
+                            <% }); %>
+                            <% if (authors.length === 0) { %>Unknown<% } %>
+                        </td>
+                        <td><%= item.status %></td>
+                        <td><a href="/content/<%= item.id %>/update">Update</a></td>
+                        <td>                       
+                            <form action="/content/<%= item.id %>?_method=DELETE" method="POST" style="display:inline;">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+                <% if (contentData.length === 0) { %>
+                    <tr>
+                        <td colspan="7">No content available in the dataset.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2025 Mighty Simple CMS</p>
+    </footer>
 </body>
 </html>

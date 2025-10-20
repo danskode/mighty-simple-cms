@@ -6,35 +6,44 @@
     <title><%= title %>></title>
 </head>
 <body>
-    <h1>User Profile: <%= user.name %></h1>
-    <h2><%= user.name %> is assigned to:</h2>  
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Deadline</th>
-                <th>Status</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-                <% const activeContent = authoredContent.filter(item => item.status);
-            activeContent.forEach(function(item) { %>    
-            <td><a href="/content/<%= item.id %>"><%= item.title %></a></td>
-            <td>Deadline: <%= item.deadline %></td>
-            <td>(<%= item.status %>)</td></li>
-            <td>update</td>
-            <td>delete</td>
-            <% }); %>
-            <% if (authoredContent.length === 0) { %>
-                <td>No content items found for this user.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            <% } %>
-        </tbody>
-    </table>
+    <header>
+        <nav>
+            <ul>
+                <a id="logo" href="/"><img src="/assets/images/logo.png"></a>
+                <a href="/content">Content</a>
+                <a href="/users">Users</a>
+            </ul>
+        </nav>        
+    </header>
+    <main>
+        <h1>User Profile: <%= user.name %></h1>
+        <h2><%= user.name %> is assigned to:</h2>  
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <% const prioritizedContent = authoredContent.filter(item => item.deadline);
+                    prioritizedContent.forEach(function(item) { %>    
+                <td><a href="/content/<%= item.id %>"><%= item.title %></a></td>
+                <td>Deadline: <%= item.deadline %></td>
+                <td>(<%= item.status %>)</td></li>
+                <% }); %>
+                <% if (prioritizedContent.length === 0) { %>
+                    <td>No content items found for this user.</td>
+                    <td>-</td>
+                    <td>-</td>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2025 Mighty Simple CMS</p>
+    </footer>
+
 </body>
 </html>

@@ -6,33 +6,47 @@
     <title><%= title %></title>
 </head>
 <body>
-    <h1>All contributers</h1>
-    Here is a list of all authors and their content items:
-    <table border="1" cellpadding="5" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Profile</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% userData.forEach(function(user) { %>
+    <header>
+        <nav>
+            <ul>
+                <a id="logo" href="/"><img src="/assets/images/logo.png"></a>
+                <a href="/content">Content</a>
+                <a href="/users">Users</a>
+            </ul>
+        </nav>        
+    </header>
+    <main>
+        <h1>All contributers</h1>
+        Here is a list of all authors and their content items:
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
                 <tr>
-                    <td><%= user.name %></td>
-                    <td><a href="/users/<%= user.id %>">View Profile</a></td>
-                    <td><a href="/users/<%= user.id %>/update">Update</a></td>
-                    <td><form action="/users/<%= user.id %>?_method=DELETE" method="POST" style="display:inline;">
-                            <button type="submit">Delete</button>
-                        </form>
-                    </td>
+                    <th>Name</th>
+                    <th>Profile</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                 </tr>
-            <% }); %>
-            <% if (userData.length === 0) { %>
-                <tr>
-                    <td colspan="4">No users available in the dataset.</td>
-                </tr>
-            <% } %>
-</body>
+            </thead>
+            <tbody>
+                <% userData.forEach(function(user) { %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><a href="/users/<%= user.id %>">View Profile</a></td>
+                        <td><a href="/users/<%= user.id %>/update">Update</a></td>
+                        <td><form action="/users/<%= user.id %>?_method=DELETE" method="POST" style="display:inline;">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+                <% if (userData.length === 0) { %>
+                    <tr>
+                        <td colspan="4">No users available in the dataset.</td>
+                    </tr>
+                <% } %>
+        </main>
+        <footer>
+            <p>&copy; 2025 Mighty Simple CMS</p>
+        </footer>
+    </body>
 </html>

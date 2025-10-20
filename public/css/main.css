@@ -6,6 +6,11 @@ body {
     color: #222;
 }
 
+#logo img {
+    height: 80px;
+    vertical-align: middle;
+}
+
 h1 {
     color: #2a7ae2;
     font-size: 2.2rem;
