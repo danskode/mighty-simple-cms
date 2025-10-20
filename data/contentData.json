@@ -1,0 +1,55 @@
+[
+    {
+        "id": "1",
+        "title": "Hvordan AI ændrer fremtidens arbejdsmarked",
+        "status": "Idea",
+        "authorIds": [
+            "1",
+            "2"
+        ],
+        "deadline": "2025-11-15",
+        "type": "Article"
+    },
+    {
+        "id": "2",
+        "title": "Sådan producerer du engagerende kortvideoer til sociale medier",
+        "status": "Draft",
+        "authorIds": [
+            "3"
+        ],
+        "deadline": "2025-12-01",
+        "type": "Video"
+    },
+    {
+        "id": "3",
+        "title": "Dataetik i moderne organisationer",
+        "status": "Review",
+        "authorIds": [
+            "4",
+            "5"
+        ],
+        "deadline": "2025-10-28",
+        "type": "Article"
+    },
+    {
+        "id": "4",
+        "title": "Podcast: Fremtidens læringsteknologi",
+        "status": "Published",
+        "authorIds": [
+            "6"
+        ],
+        "deadline": "2025-09-30",
+        "type": "Podcast"
+    },
+    {
+        "id": "5",
+        "title": "Visuel storytelling for virksomheder",
+        "status": "Draft",
+        "authorIds": [
+            "7",
+            "8"
+        ],
+        "deadline": "2025-11-22",
+        "type": "Video"
+    }
+]

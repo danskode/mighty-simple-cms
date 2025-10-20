@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "name": "Maja Jensen",
+        "email": "maja.jensen@example.com",
+        "role": "Editor"
+    },
+    {
+        "id": "2",
+        "name": "Anders Holm",
+        "email": "anders.holm@example.com",
+        "role": "Contributor"
+    },
+    {
+        "id": "3",
+        "name": "Lars Nielsen",
+        "email": "lars.nielsen@example.com",
+        "role": "Contributor"
+    },
+    {
+        "id": "4",
+        "name": "Sofie Andersen",
+        "email": "sofie.andersen@example.com",
+        "role": "Editor"
+    },
+    {
+        "id": "5",
+        "name": "Emil Kristensen",
+        "email": "emil.kristensen@example.com",
+        "role": "Contributor"
+    },
+    {
+        "id": "6",
+        "name": "Nadia Rahman",
+        "email": "nadia.rahman@example.com",
+        "role": "Editor"
+    },
+    {
+        "id": "7",
+        "name": "Thomas Berg",
+        "email": "thomas.berg@example.com",
+        "role": "Contributor"
+    },
+    {
+        "id": "8",
+        "name": "Julie Hansen",
+        "email": "julie.hansen@example.com",
+        "role": "Contributor"
+    }
+]

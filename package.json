@@ -1,0 +1,32 @@
+{
+  "name": "mighty-simple-cms",
+  "version": "1.0.0",
+  "description": "A test assignment for internship",
+  "keywords": [
+    "dev-test",
+    "cms",
+    "3hr-test"
+  ],
+  "homepage": "https://github.com/danskode/mighty-simple-cms#readme",
+  "bugs": {
+    "url": "https://github.com/danskode/mighty-simple-cms/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danskode/mighty-simple-cms.git"
+  },
+  "license": "MIT",
+  "author": "Danskode",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "prod": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
