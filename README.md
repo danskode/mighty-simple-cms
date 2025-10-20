@@ -1,7 +1,7 @@
 # mighty-simple-cms
 CMS for a 3 hour test
 
-** Quick how-to guide: **
+**Quick how-to guide:**
 
 1) Clone repo
 2) cd into the root of the project
