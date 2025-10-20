@@ -20,6 +20,7 @@ header {
 
 main {
     flex: 1 0 auto;
+    align-items: center;
     justify-content: center;
     padding: 2rem;
 }
@@ -44,6 +45,7 @@ table {
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 2rem;
+    border: 1px solid #e1e7f0;
 }
 
 th, td {

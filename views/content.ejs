@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
     <title><%= title %></title>
 </head>
 <body>
@@ -18,7 +19,7 @@
     <main>
         <h1>All content</h1>
         Here is a list of all content items and their authors:
-        <table border="1" cellpadding="5" cellspacing="0">
+        <table>
             <thead>
                 <tr>
                     <th>Type</th>
@@ -36,7 +37,7 @@
                     <tr>
                         <td><%= item.type %></td>
                         <td><%= item.deadline %></td>
-                        <td><%= item.title %></td>
+                        <td><a href="/content/<%= item.id %>"><%= item.title %></a></td>
                         <td>
                             <%
                             const authors = item.authorIds
