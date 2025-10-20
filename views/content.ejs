@@ -6,22 +6,48 @@
 </head>
 <body>
     <h1>All content</h1>
-    <ul>
-        <% contentData.forEach(function(item) { %>
-            <li>
-                <%= item.title %> by
-                <%
-                const authors = item.authorIds
-                    .map(authorId => userData.find(u => u.id === authorId))
-                    .filter(user => user !== undefined);
-                %>
-                <% authors.forEach((user, index) => { %>
-                    <a href="/users/<%= user.id %>"><%= user.name %></a><%= index < authors.length - 1 ? ', ' : '' %>
-                <% }); %>
-                <% if (authors.length === 0) { %>Unknown<% } %>
-            </li>
-        <% }); %>
-    </ul>
-    
+    Here is a list of all content items and their authors:
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Deadline</th>
+                <th>Title</th>
+                <th>Authors</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% const sortedContent = [...contentData].sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+            sortedContent.forEach(function(item) { %>
+                <tr>
+                    <td><%= item.type %></td>
+                    <td><%= item.deadline %></td>
+                    <td><%= item.title %></td>
+                    <td>
+                        <%
+                        const authors = item.authorIds
+                            .map(authorId => userData.find(u => u.id === authorId))
+                            .filter(user => user !== undefined);
+                        %>
+                        <% authors.forEach((user, index) => { %>
+                            <a href="/users/<%= user.id %>"><%= user.name %></a><%= index < authors.length - 1 ? ', ' : '' %>
+                        <% }); %>
+                        <% if (authors.length === 0) { %>Unknown<% } %>
+                    </td>
+                    <td><%= item.status %></td>
+                    <td><a href="/content/<%= item.id %>/update">Update</a></td>
+                    <td><a href="/content/<%= item.id %>/delete">Delete</a></td>
+                </tr>
+            <% }); %>
+            <% if (contentData.length === 0) { %>
+                <tr>
+                    <td colspan="7">No content available in the dataset.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
 </body>
 </html>

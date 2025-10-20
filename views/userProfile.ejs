@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title><%= title %>></title>
+</head>
+<body>
+    <h1>User Profile: <%= user.name %></h1>
+    <p><b>User ID:</b> <%= user.id %></p>
+    <h2>Content Items by <%= user.name %>:</h2>
+    <ul>
+        <% authoredContent.forEach(function(item) { %>
+            <li><b>Deadline: <a href="/content/<%= item.id %>"" <%= item.deadline %>:</b> <%= item.title %></li>
+        <% }); %>
+        <% if (authoredContent.length === 0) { %>
+            <li>No content items found for this user.</li>
+        <% } %>
+    </ul>
+</body>
+</html>
